@@ -1,0 +1,83 @@
+## Build results
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+build/
+bld/
+*.build.csdef
+
+## Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+## Test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+coverage*.info
+
+## NuGet
+*.nupkg
+*.snupkg
+**/packages/*
+!**/packages/build/
+*.nuget.props
+*.nuget.targets
+
+## ASP.NET / Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.dbmdl
+*.jfm
+
+## User secrets / env
+secrets.json
+appsettings.Development.json
+appsettings.Local.json
+.env
+.env.*
+
+## Published output
+publish/
+*.publishsettings
+publishprofiles/
+
+## Node (if using front-end tooling)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+## Misc
+*.tmp
+*.temp
+*.log
+*.cache
+.DS_Store
+Thumbs.db
+
+## IIS / deployment
+*.pidb
+*.svclog
+*.psess
+*.vsp
+*.vspx
+*.sap

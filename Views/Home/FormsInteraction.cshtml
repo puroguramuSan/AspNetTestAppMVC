@@ -1,0 +1,53 @@
+@using AspNetTestAppMVC.Models
+@model FormsInteractionViewModel
+
+@{
+  ViewData["Title"] = "Interacción de formas";
+}
+
+<div class="container justify-content-center">
+  <div class="container-sm" style="max-width: 350px">
+    <form asp-action="FormsInteraction" method="post" class="w-100">
+      @Html.AntiForgeryToken()
+      <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="PaternalSurname" class="form-label"></label>
+        <input asp-for="PaternalSurname" class="form-control" />
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="MaternalSurname" class="form-label"></label>
+        <input asp-for="MaternalSurname" class="form-control" />
+      </div>
+
+      <div class="mb-3">
+        <label asp-for="Treatment" class="form-label"></label>
+        <select asp-for="Treatment" asp-items="Html.GetEnumSelectList<StringTreatment>()" class="form-select">
+          <option value="">-- Selecciona --</option>
+        </select>
+        <span asp-validation-for="Treatment" class="text-danger"></span>
+      </div>
+
+      <div class="form-check mb-3">
+        <input asp-for="PaternalFirst" class="form-check-input" />
+        <label asp-for="PaternalFirst" class="form-check-label"></label>
+      </div>
+
+      <button class="btn btn-primary">Enviar</button>
+    </form>
+
+    @if (!string.IsNullOrEmpty(Model.FullName))
+    {
+      <p class="mt-3">Resultado: <strong>@Model.FullName</strong></p>
+    }
+  </div>
+</div>
+
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}

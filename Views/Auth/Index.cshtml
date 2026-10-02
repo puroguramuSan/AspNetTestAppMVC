@@ -1,0 +1,33 @@
+@model AspNetTestAppMVC.Models.LoginViewModel
+
+@{
+  ViewData["Title"] = "Login Page";
+}
+
+<div class="w-100 d-flex align-items-center justify-content-center">
+  <form asp-controller="Auth" asp-action="Index" method="POST" class="w-30" style="max-width: 450px; min-width: 300px;">
+    @Html.AntiForgeryToken()
+    <div class="mb-3">
+      <label asp-for="Email" class="form-label">Correo</label>
+      <input asp-for="Email" class="form-control" type="email">
+      <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+      <label asp-for="Password" class="form-label">Contraseña</label>
+      <input asp-for="Password" class="form-control" type="password">
+      <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    @if (!string.IsNullOrEmpty(Model.Error))
+    {
+      var alertClass = Model.ComponentState switch
+      {
+        ComponentStateEnum.Success => "alert-success",
+        ComponentStateEnum.Info => "alert-info",
+        ComponentStateEnum.Failure => "alert-danger", // Bootstrap uses "danger", not "failure"
+        _ => "alert-info"
+      };
+      <div class="alert @alertClass">@Model.Error</div>
+    }
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+  </form>
+</div>
