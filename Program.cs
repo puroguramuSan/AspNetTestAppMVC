@@ -28,8 +28,16 @@ builder.Services.AddIdentity<AuthUser, IdentityRole>(options =>
 
 //builder.Services.AddScoped<IAuthService, AuthService>();
 
-// Add services to the container.
+// Add services to the container. ---------------------------------
+// Controllers
 builder.Services.AddControllersWithViews();
+// Factories
+builder.Services.AddScoped<AuthUserFactory>();
+// Seeders
+builder.Services.AddScoped<AuthUserSeeder>();
+
+builder.Services.AddDbContext<AppDbContext>(options =>
+  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

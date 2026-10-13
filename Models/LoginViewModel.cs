@@ -2,10 +2,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AspNetTestAppMVC.Models;
 
-public enum ComponentStateEnum {
+public enum LoginComponentState {
   Success,
   Info,
-  Failure
+  Failure,
+  Default
 }
 
 public class LoginViewModel
@@ -14,7 +15,7 @@ public class LoginViewModel
   private const string RequiredMessage = "Este campo es obligatorio";
 
   [Required(ErrorMessage = RequiredMessage)]
-  [EmailAddress(ErrorMessage = "El correo no tienen un formato válido")]
+  [EmailAddress(ErrorMessage = "El correo no tiene un formato válido")]
   [Display(Name = "Correo")]
   public string Email { get; set; } = string.Empty;
 
@@ -24,5 +25,5 @@ public class LoginViewModel
   public string Password { get; set; } = string.Empty;
 
   public string Error { get; set; } = string.Empty;
-  public ComponentStateEnum ComponentState { get; set; } = ComponentStateEnum.Info;
+  public LoginComponentState ComponentState { get; set; } = LoginComponentState.Info;
 }

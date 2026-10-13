@@ -28,13 +28,22 @@ public class AuthController : Controller
 
     if (model.Email == "test@email.com" && model.Password == "TestPass") {
       //return RedirectToAction("Index", "Home");
-      model.ComponentState = ComponentStateEnum.Success;
+      model.ComponentState = LoginComponentState.Success;
       model.Error = $"Logeado con el usuario {model.Email}";
       return View(model);
     }
 
-    model.ComponentState = ComponentStateEnum.Failure;
+    model.ComponentState = LoginComponentState.Failure;
     model.Error = "Credenciales incorrectas";
     return View(model);
   }
-}
+
+  [HttpPost]
+  public IActionResult Index(SignupViewModel model) 
+  {
+    Console.WriteLine("Handling User signup");
+    if (!ModelState.IsValid) {
+      return View(model);
+    }
+  }
+} 
